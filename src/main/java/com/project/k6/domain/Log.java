@@ -40,7 +40,7 @@ public class Log {
 	private Product inputproduct;
 	
 	@ManyToOne //양방향
-	@JoinColumn(name = "member_id")
+	@JoinColumn(name = "member_email")
 	private Member member;
 	
 	@ManyToMany

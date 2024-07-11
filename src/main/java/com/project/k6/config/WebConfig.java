@@ -1,4 +1,4 @@
-package com.project.k6.comfig;
+package com.project.k6.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
