@@ -1,6 +1,8 @@
 package com.project.k6.dto;
 
-import com.project.k6.domain.Role;
+import java.util.Set;
+
+import com.project.k6.domain.Product;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,14 +10,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+
 @Getter
 @Setter
 @ToString
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class MemberDTO {
-	private String username;
-	private String email;
-	private Role role;
+public class LogDTO {
+	 private String memberId;
+	 private boolean evaluation;
+     private Product inputproduct;
+     private Set<Product> resultproduct;
 }

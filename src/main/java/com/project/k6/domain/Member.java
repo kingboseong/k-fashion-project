@@ -3,6 +3,8 @@ package com.project.k6.domain;
 import java.util.Date;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -33,6 +35,7 @@ public class Member {
 	private Date date;
 	private Role role;
 	@OneToMany(mappedBy = "member") // 주인테이블, 양방향 mappedBy
+	@JsonIgnore
 	private Set<Log> log;
 	
 }

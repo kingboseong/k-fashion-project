@@ -24,12 +24,10 @@ public class LikeService {
 	@Autowired
 	private ProductRepository productRepo;
 	
-	//찜 조회
 	public List<Like> like() {
 		return likeRepo.findAll();
 	}
 	
-	//찜 DB에 저장
 	public Like addlike(String memberId, Long productId) {
 	      Member member = memberRepo.findByEmail(memberId)
 	              .orElseThrow(() -> new RuntimeException("Member not found"));

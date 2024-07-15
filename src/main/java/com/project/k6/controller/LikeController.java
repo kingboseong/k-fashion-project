@@ -17,11 +17,13 @@ public class LikeController {
 	@Autowired
 	private LikeService likeService;
 	
+	//찜 조회
 	@PostMapping("/like")
 	public List<Like> like(){
 		return likeService.like();
 	}
 	
+	//찜 DB에 저장
 	@PostMapping("/likes")
     public ResponseEntity<Like> addlike(@RequestParam String memberId, @RequestParam Long productId) {
         Like like = likeService.addlike(memberId, productId);

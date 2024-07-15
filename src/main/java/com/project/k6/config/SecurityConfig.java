@@ -50,5 +50,4 @@ public class SecurityConfig {
 		 http.addFilterBefore(new JWTAuthorizationFilter(memberRepository), AuthorizationFilter.class);
 		 return http.build();
 	 }
-	
 }
