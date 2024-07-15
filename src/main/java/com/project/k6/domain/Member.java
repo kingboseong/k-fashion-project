@@ -4,8 +4,6 @@ import java.util.Date;
 import java.util.Set;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -27,6 +25,8 @@ import lombok.ToString;
 public class Member {
 	
 	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	private Long seq;
 	private String email;
 	private String password;
 	private String username;

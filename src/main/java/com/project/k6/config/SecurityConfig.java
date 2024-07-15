@@ -11,6 +11,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.intercept.AuthorizationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.project.k6.persistence.MemberRepository;
 
@@ -31,8 +34,7 @@ public class SecurityConfig {
 	 
 	 @Bean
 	 SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-
-
+		 
 		 http.csrf(csrf->csrf.disable());
 		 
 		 http.authorizeHttpRequests(auth->auth
@@ -51,4 +53,5 @@ public class SecurityConfig {
 		 http.addFilterBefore(new JWTAuthorizationFilter(memberRepository), AuthorizationFilter.class);
 		 return http.build();
 	 }
+	
 }
