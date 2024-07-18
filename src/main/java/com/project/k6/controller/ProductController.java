@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,23 +21,34 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
-	//사진 DB에 저장
-	@PostMapping("/product")
-	public String productimg(@RequestParam("file") MultipartFile file, Model model) {
-		try {
-			productService.saveImage(file);
-			model.addAttribute("message", "File uploaded successfully!");
-		}catch(IOException e) {
-			model.addAttribute("message", "File upload failed!");
-			e.printStackTrace();
-		}
-		return "success";
-	}
+	@GetMapping("/products")
+    public List<Product> getProducts() {
+        return productService.getProducts();
+    }
 	
-	@GetMapping("/product")
+	
+	
+	
+	
+	
+	
+//	//사진 DB에 저장
+//	@PostMapping("/product")
+//	public String productimg(@RequestParam("file") MultipartFile file, Model model) {
+//		try {
+//			productService.saveImage(file);
+//			model.addAttribute("message", "File uploaded successfully!");
+//		}catch(IOException e) {
+//			model.addAttribute("message", "File upload failed!");
+//			e.printStackTrace();
+//		}
+//		return "success";
+//	}
+	
+	@PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')") //임시로 권한 설정
+	@GetMapping("/api/products/list")
 	public List<Product> allimg() throws IOException {
-		return productService.allimg();
-		
+		return productService.allimg();	
 	}
 	
 	@GetMapping("/product/recomend")

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,14 +19,14 @@ public class LikeController {
 	private LikeService likeService;
 	
 	//찜 조회
-	@PostMapping("/like")
-	public List<Like> like(){
-		return likeService.like();
+	@GetMapping("/like")
+	public List<Like> like(@RequestParam Long memberId){
+		return likeService.like(memberId);
 	}
 	
 	//찜 DB에 저장
-	@PostMapping("/likes")
-    public ResponseEntity<Like> addlike(@RequestParam String memberId, @RequestParam Long productId) {
+	@PostMapping("/like")
+    public ResponseEntity<Like> addlike(@RequestParam Long memberId, @RequestParam Long productId) {
         Like like = likeService.addlike(memberId, productId);
         return ResponseEntity.ok(like);
     }

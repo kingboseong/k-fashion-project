@@ -1,6 +1,5 @@
 package com.project.k6.domain;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,12 +23,12 @@ import lombok.ToString;
 public class Product {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String catagory;
-	private String name;
-	
-	@Column(columnDefinition = "LONGBLOB")
-	private byte[] img;
-	
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String productCode;
+    private int quantity;
+    private String productName;
+    private String price;
+    private String imagePath;
 }

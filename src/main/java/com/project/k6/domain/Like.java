@@ -32,7 +32,7 @@ public class Like {
 	private Date date;
 	
 	@ManyToOne
-	@JoinColumn(name = "member_id")
+	@JoinColumn(name = "member_seq")
 	private Member member;
 	
 	@ManyToOne

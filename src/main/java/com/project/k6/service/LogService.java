@@ -27,13 +27,10 @@ public class LogService {
 	@Autowired
 	private ProductRepository productRepo;
 	
-	public Optional<Log> log(String memberEmail) {
-	    Member member = memberRepo.findByEmail(memberEmail)
+	public Optional<Log> log(Long memberId) {
+	    Member member = memberRepo.findById(memberId)
 	            .orElseThrow(() -> new RuntimeException("Member not found"));
 	    
-		Log log = new Log();
-		log.setMember(member);
-		logRepo.save(log);
 		
 		return logRepo.findByMember(member);
 	}

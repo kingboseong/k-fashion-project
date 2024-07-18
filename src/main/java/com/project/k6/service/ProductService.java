@@ -1,5 +1,6 @@
 package com.project.k6.service;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
@@ -8,8 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project.k6.domain.Product;
 import com.project.k6.persistence.ProductRepository;
+
+import jakarta.annotation.PostConstruct;
 
 @Service
 public class ProductService {
@@ -21,13 +26,13 @@ public class ProductService {
 //	@Autowired
 //	private Product product;
 	
-	public void saveImage(MultipartFile img) throws IOException{
-		Product product = new Product();
-		product.setImg(img.getBytes());
-		product.setName("test" + img.getOriginalFilename());
-		product.setCatagory("clothes");
-		productRepo.save(product);
-	}
+//	public void saveImage(MultipartFile img) throws IOException{
+//		Product product = new Product();
+//		product.setImg(img.getBytes());
+//		product.setName("test" + img.getOriginalFilename());
+//		product.setCatagory("clothes");
+//		productRepo.save(product);
+//	}
 	
 	//모든 product를 보여줌
 	public List<Product> allimg() throws IOException{
@@ -42,4 +47,16 @@ public class ProductService {
 		result.add(product);
         return result;
 	}
+    @PostConstruct
+    public List<Product> getProducts() {
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            File jsonFile = new File("src/main/resources/sorted_상품코드_수량.json");
+            List<Product> products = objectMapper.readValue(jsonFile, new TypeReference<List<Product>>(){});
+            productRepo.saveAll(products);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+		return null;
+    }
 }

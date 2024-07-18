@@ -4,8 +4,9 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.k6.domain.Log;
@@ -20,14 +21,14 @@ public class LogController {
 	private LogService logService;
 	
 	//log 조회
-	@PostMapping("/log")
-	public Optional<Log> log(@RequestBody String memberEmail) {
-		return logService.log(memberEmail);
+	@GetMapping("/log")
+	public Optional<Log> log(@RequestParam Long memberId) {
+		return logService.log(memberId);
 	}
 	
 	//log DB에 저장
-	@PostMapping("/logs")
-    public ResponseEntity<Log> addlog(@RequestBody LogDTO logDTO) {
+	@PostMapping("/log")
+    public ResponseEntity<Log> addlog(@RequestParam LogDTO logDTO) {
         Log log = logService.addlog(logDTO);
         return ResponseEntity.ok(log);
     }
