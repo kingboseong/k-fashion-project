@@ -4,11 +4,11 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.project.k6.domain.Product;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
-	
-	 @Query(value = "SELECT * FROM product ORDER BY RAND() LIMIT 5", nativeQuery = true) //모델 나오기 전 테스트용 랜덤 5개
-	 List<Product> findRandomProducts();
+	@Query("SELECT p FROM Product p WHERE SUBSTRING(p.productCode, 5, 2) = :code")
+    List<Product> findByProductCodeSegment(@Param("code") String code);
 }

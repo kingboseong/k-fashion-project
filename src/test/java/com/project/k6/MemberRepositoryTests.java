@@ -1,5 +1,7 @@
 package com.project.k6;
 
+import java.util.Date;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,6 +28,7 @@ public class MemberRepositoryTests {
 			Member member = Member.builder()
 					.email("user"+i+"@aaa.com")
 					.password(passwordEncoder.encode("1111"))
+					.date(new Date())
 					.nickname("USER"+i)
 					.build();
 			member.addRole(MemberRole.USER);
