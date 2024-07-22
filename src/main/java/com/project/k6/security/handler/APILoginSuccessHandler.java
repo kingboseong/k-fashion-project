@@ -8,14 +8,15 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 import com.google.gson.Gson;
-import com.project.k6.dto.MemberDTO;
 import com.project.k6.util.JWTUtil;
+import com.project.k6.dto.MemberDTO;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.log4j.Log4j2;
 
+//Spring Security 인증 성공 처리 핸들러 클래스
 @Log4j2
 public class APILoginSuccessHandler implements AuthenticationSuccessHandler{
 	

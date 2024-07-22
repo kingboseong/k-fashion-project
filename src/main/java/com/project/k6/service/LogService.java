@@ -7,13 +7,13 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.project.k6.domain.Log;
-import com.project.k6.domain.Member;
 import com.project.k6.domain.Product;
 import com.project.k6.dto.LogDTO;
+import com.project.k6.persistence.ProductRepository;
+import com.project.k6.domain.Log;
+import com.project.k6.domain.Member;
 import com.project.k6.persistence.LogRepository;
 import com.project.k6.persistence.MemberRepository;
-import com.project.k6.persistence.ProductRepository;
 
 @Service
 public class LogService {

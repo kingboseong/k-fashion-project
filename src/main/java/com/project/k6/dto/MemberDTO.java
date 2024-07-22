@@ -40,5 +40,4 @@ public class MemberDTO extends User{
 		dataMap.put("roleNames",roleNames );
 		return dataMap;
 	}
-	
 }

@@ -6,12 +6,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.project.k6.domain.Like;
-import com.project.k6.domain.Member;
 import com.project.k6.domain.Product;
 import com.project.k6.persistence.LikeRepository;
-import com.project.k6.persistence.MemberRepository;
 import com.project.k6.persistence.ProductRepository;
+import com.project.k6.domain.Like;
+import com.project.k6.domain.Member;
+import com.project.k6.persistence.MemberRepository;
 
 @Service
 public class LikeService {
@@ -37,6 +37,10 @@ public class LikeService {
 	      Product product = productRepo.findById(productId)
 	              .orElseThrow(() -> new RuntimeException("Product not found"));
 
+	      if (likeRepo.existsByMemberAndProduct(member, product)) {
+	            throw new RuntimeException("Like already exists");
+	        }	
+	      
 	      Like like = new Like();
 	      like.setMember(member);
 	      like.setProduct(product);
@@ -45,5 +49,3 @@ public class LikeService {
 	      return likeRepo.save(like);
 	  }
 }
-
-

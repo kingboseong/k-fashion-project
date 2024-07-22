@@ -7,7 +7,7 @@ import java.util.Locale;
 
 import org.springframework.format.Formatter;
 
-
+//날짜를 문자열로 변환하고, 문자열을 날짜로 변환하는 역할을 하는 클래스
 public class LocalDateFormatter implements Formatter<LocalDate>{
 
 	@Override

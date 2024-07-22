@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.project.k6.util.CustomJWTException;
 
+//예외 처리를 위한 컨트롤러 어드바이스 클래스.
 public class CustomControllerAdvice {
 	
 	@ExceptionHandler(CustomJWTException.class)
@@ -16,4 +17,9 @@ public class CustomControllerAdvice {
 		
 		return ResponseEntity.ok().body(Map.of("error", msg));
 	}
+	
+//    @ExceptionHandler(EmailAlreadyExistsException.class)
+//    public ResponseEntity<Map<String, String>> handleEmailAlreadyExistsException(EmailAlreadyExistsException ex) {
+//        return new ResponseEntity<>(Map.of("error", ex.getMessage()), HttpStatus.BAD_REQUEST);
+//    }
 }

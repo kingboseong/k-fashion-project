@@ -2,6 +2,7 @@ package com.project.k6.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
@@ -20,6 +21,15 @@ public class WebConfig implements WebMvcConfigurer{
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") //괄호안에 있는 HTTP메서드를 허용한다.
                 .allowedHeaders("*") // 모든 HTTP헤더를 허용한다.
                 .allowCredentials(true); // 자격 증명을 허용한다.(쿠키, 인증 헤더 등)
+    }
+    
+    //이미지 경로 front에 띄우는 코드
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+
+    	registry.addResourceHandler("/images/**") // "/image/**" 경로로 들어오는 요청을 처리할 리로스 핸들러 추가
+    			.addResourceLocations("file:///C:/spring/images/"); //리소스 핸들러가 제공할 실제 파일 시스템 경로를 지정
+    	
     }
 
 }

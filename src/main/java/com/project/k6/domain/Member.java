@@ -41,7 +41,7 @@ public class Member {
 	private String password;
 	private String nickname;
 	private Date date;
-	@ElementCollection(fetch=FetchType.LAZY)
+	@ElementCollection(fetch=FetchType.EAGER)
 	@Builder.Default
 	private List<MemberRole> memberRoleList = new ArrayList<>();
 	@OneToMany(mappedBy = "member") // 주인테이블, 양방향 mappedBy

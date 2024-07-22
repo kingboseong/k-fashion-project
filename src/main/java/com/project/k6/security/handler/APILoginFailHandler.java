@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.log4j.Log4j2;
 
+//Spring Security에서 인증 실패를 처리하는 핸들러 클래스
 @Log4j2
 public class APILoginFailHandler implements AuthenticationFailureHandler {
 
@@ -21,7 +22,7 @@ public class APILoginFailHandler implements AuthenticationFailureHandler {
 	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException exception) throws IOException, ServletException {
 		// TODO Auto-generated method stub
-		log.info("Login fail...."+exception);
+		log.info("Login fail...."+exception); //로그인 실패 메시지 로깅
 		
 		Gson gson = new Gson();
 		String jsonStr = gson.toJson(Map.of("error","ERROR_LOGIN"));

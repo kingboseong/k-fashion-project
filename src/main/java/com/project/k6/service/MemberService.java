@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 import com.project.k6.domain.Member;
 import com.project.k6.persistence.MemberRepository;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 @Service
 public class MemberService {
 
@@ -19,16 +22,22 @@ public class MemberService {
 	private PasswordEncoder passwordEncoder;
 	
 	//회원가입 / login은 postman으로 성공
-	public Member signup(Member member){
+	public String signup(Member member){
 //		아이디 중복걸러주는 코드인데 오류가 남. 아마 SecurityUserDetailsService가 있어서 그런 듯?
 //		if(memberRepo.findByEmail(member.getEmail()) != null) {
-//			throw new RuntimeException("Username is already taken");			
-//		}
-		
-		member.setPassword(passwordEncoder.encode(member.getPassword()));
-		member.setDate(new Date());
-//		member.setRole(MemberRole.ROLE_USER);
-		member.getMemberRoleList();
-		return memberRepo.save(member);
+//			throw new EmailAlreadyExistsException("email is already taken");
+//		}		
+		if(memberRepo.findByEmail(member.getEmail()).isEmpty()) { //.isEmpty() Repository에서 받는 member가 optional이라서.
+			
+			//받은거에서 추가저장
+			member.setPassword(passwordEncoder.encode(member.getPassword()));
+			member.setDate(new Date());
+			member.getMemberRoleList();
+			memberRepo.save(member);
+			return "ok";
+		} else {
+			log.error("중복되는 email이 있습니다");
+			return "error";
+		}
 	}
 }

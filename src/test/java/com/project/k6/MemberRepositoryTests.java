@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.project.k6.domain.Member;
 import com.project.k6.domain.MemberRole;
+import com.project.k6.domain.Member;
 import com.project.k6.persistence.MemberRepository;
 
 import lombok.extern.log4j.Log4j2;

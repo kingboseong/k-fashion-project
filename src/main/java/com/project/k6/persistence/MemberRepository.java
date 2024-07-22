@@ -10,6 +10,7 @@ import org.springframework.data.repository.query.Param;
 import com.project.k6.domain.Member;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {
+	
 	Optional<Member> findByEmail(String email);
 	
 	@EntityGraph(attributePaths = {"memberRoleList"})

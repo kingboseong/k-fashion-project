@@ -30,4 +30,5 @@ public class Product {
     private String productName;
     private String price;
     private String imagePath;
+    private String category;
 }

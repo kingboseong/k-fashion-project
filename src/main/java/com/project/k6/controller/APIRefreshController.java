@@ -12,6 +12,8 @@ import com.project.k6.util.JWTUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
+//JWT를 사용하여 인증 토큰을 갱신하는 기능 제공
+//기존에 만료된, 만료될 예정인 액세슽 토큰을 새로운 토큰으로 갱신할 수 있도록 해줌.
 @RestController
 @RequiredArgsConstructor
 @Log4j2

@@ -22,11 +22,6 @@ public class ProductController {
 		return productService.products();	
 	}
 	
-//	@GetMapping("/api/products/list/{category}")
-//	public String productbycategory(@PathVariable String category) throws IOException {
-//		return productService.productbycategory();	
-//	}
-	
 	@GetMapping("/api/products/list/{code}")
     public List<Product> findByProductCodeSegment(@PathVariable String code) {
         return productService.findByProductCodeSegment(code);
