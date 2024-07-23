@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.Set;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -43,7 +44,7 @@ public class Log {
 	@JoinColumn(name = "member_seq", nullable = false)
 	private Member member;
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
 		name = "log_product", // jointable 의 이름
 	    joinColumns = @JoinColumn(name = "log_seq"), //log 테이블(이쪽)의 id 를 필드값으로 넣겠다. 

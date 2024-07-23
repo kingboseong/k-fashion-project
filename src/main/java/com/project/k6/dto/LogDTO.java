@@ -2,8 +2,6 @@ package com.project.k6.dto;
 
 import java.util.Set;
 
-import com.project.k6.domain.Product;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,6 +18,6 @@ import lombok.ToString;
 public class LogDTO {
 	 private String memberId;
 	 private boolean evaluation;
-     private Product inputproduct;
-     private Set<Product> resultproduct;
+     private Long inputproduct;
+     private Set<Long> resultproduct;
 }
