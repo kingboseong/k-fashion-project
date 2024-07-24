@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -64,7 +65,18 @@ public class CustomSecurityConfig {
     	//예외 처리 핸들러 설정
     	http.exceptionHandling(config -> {config.accessDeniedHandler(new CustomAccessDeniedHandler());});
     	
-    	
+    	// 로그아웃 설정 추가
+//        http.logout(logout -> {
+//            logout.logoutUrl("/api/logout")  // 로그아웃 엔드포인트 설정
+//                  .logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler()) // 로그아웃 성공 시 핸들러
+//                  .invalidateHttpSession(true)  // 세션 무효화
+//                  .deleteCookies("JSESSIONID")  // 세션 쿠키 삭제
+//                  .clearAuthentication(true);  // 인증 정보 제거
+//        });
+//    	#토큰 저장 위치 변경
+//    	로컬, 브라우저에 저장하고있으면 안날라감
+//    	세션스토리지에 저장해야함.
+//    	
     	return http.build();
 	}
     

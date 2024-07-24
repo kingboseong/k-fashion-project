@@ -34,22 +34,10 @@ public class JWTCheckFilter extends OncePerRequestFilter{// OncePerRequestFilter
 		
 		log.info("check uri.............." + path);
 		
-		//api/member/ 경로의 호출은 체크하지 않음
-		if(path.startsWith("/api/member/")) {
-			return true;
-		}
-
-		if(path.startsWith("/img/")) {
-			return true;
-		}
 		if(path.startsWith("/")) {
 			return true;
 		}
-		
-		//이미지 조회 경로는 체크하지 않는다면
-		if(path.startsWith("/api/products/")) {
-			return true;
-		}
+
 		//위 if문에서 설정한 api경로 외의 경로는 필터 적용
 		return false;
 	}
@@ -75,6 +63,7 @@ public class JWTCheckFilter extends OncePerRequestFilter{// OncePerRequestFilter
 			String nickname = (String) claims.get("nickname");
 			String password = (String) claims.get("password");
 			Long id = (Long) claims.get("id");
+			@SuppressWarnings("unchecked")
 			List<String> roleNames = (List<String>) claims.get("roleNames");
 			
 			MemberDTO memberDTO = new MemberDTO(id,email, password, nickname, roleNames);

@@ -15,7 +15,7 @@ import com.project.k6.persistence.ProductRepository;
 @Service
 public class ProductService {
 	
-	@Autowired //컨테이너에 있는 객체와 연결시켜주는 역할.(동일화)ㅓ
+	@Autowired //컨테이너에 있는 객체와 연결시켜주는 역할.(동일화)
 	private ProductRepository productRepo;
 
 
@@ -56,7 +56,7 @@ public class ProductService {
 //			plist.get(i).setImagePath(plist.get(i).getImagePath().replace("\\", "/"));
 //		}
 		
-		
+		//현직에서 for문 보다 stream 선호
 		List<Product> updatedList = plist.stream()
 	            .map(product -> {
 	                product.setImagePath(product.getImagePath().replace("\\","/"));

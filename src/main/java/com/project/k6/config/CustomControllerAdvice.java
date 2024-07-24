@@ -17,9 +17,4 @@ public class CustomControllerAdvice {
 		
 		return ResponseEntity.ok().body(Map.of("error", msg));
 	}
-	
-//    @ExceptionHandler(EmailAlreadyExistsException.class)
-//    public ResponseEntity<Map<String, String>> handleEmailAlreadyExistsException(EmailAlreadyExistsException ex) {
-//        return new ResponseEntity<>(Map.of("error", ex.getMessage()), HttpStatus.BAD_REQUEST);
-//    }
 }

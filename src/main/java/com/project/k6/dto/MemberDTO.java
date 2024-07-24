@@ -16,6 +16,10 @@ import lombok.ToString;
 @Setter
 @ToString
 public class MemberDTO extends User{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long id;
 	private String nickname;
 	private String email;

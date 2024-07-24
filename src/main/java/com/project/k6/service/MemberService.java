@@ -23,10 +23,6 @@ public class MemberService {
 	
 	//회원가입 / login은 postman으로 성공
 	public String signup(Member member){
-//		아이디 중복걸러주는 코드인데 오류가 남. 아마 SecurityUserDetailsService가 있어서 그런 듯?
-//		if(memberRepo.findByEmail(member.getEmail()) != null) {
-//			throw new EmailAlreadyExistsException("email is already taken");
-//		}
 		if(memberRepo.findByEmail(member.getEmail()).isEmpty()) { //.isEmpty() Repository에서 받는 member가 optional이라서.
 			
 			//받은거에서 추가저장

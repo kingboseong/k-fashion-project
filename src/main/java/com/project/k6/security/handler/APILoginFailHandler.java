@@ -21,7 +21,7 @@ public class APILoginFailHandler implements AuthenticationFailureHandler {
 	@Override
 	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException exception) throws IOException, ServletException {
-		// TODO Auto-generated method stub
+		
 		log.info("Login fail...."+exception); //로그인 실패 메시지 로깅
 		
 		Gson gson = new Gson();
