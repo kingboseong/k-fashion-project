@@ -36,4 +36,12 @@ public class MemberService {
 			return "error";
 		}
 	}
+
+	public String delete(String email) {
+		Member member = memberRepo.findByEmail(email)
+		      .orElseThrow(() -> new RuntimeException("Member does not exist"));
+		    
+		memberRepo.delete(member);
+		return "Member Deleted successfully";
+	}
 }
