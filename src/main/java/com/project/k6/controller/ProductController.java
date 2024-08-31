@@ -16,12 +16,12 @@ public class ProductController {
 	
 	@Autowired
 	private ProductService productService;
-
+	//상품 나열
 	@GetMapping("/api/products/list")
 	public List<Product> products() throws IOException {
 		return productService.products();	
 	}
-	
+	//상품 검색
 	@GetMapping("/api/products/list/{code}")
     public List<Product> findByProductCodeSegment(@PathVariable String code) {
         return productService.findByProductCodeSegment(code);
