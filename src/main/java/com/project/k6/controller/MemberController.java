@@ -17,11 +17,12 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	//회원가입
 	@PostMapping("/api/member/signup")
 	public String signup(@RequestBody Member member) {
 		return memberService.signup(member);
 	}
-	
+	//회원탈퇴
 	@DeleteMapping("/api/member/delete")
 	public String delete(@RequestParam String email) {
 		return memberService.delete(email);
